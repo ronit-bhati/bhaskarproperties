@@ -11,7 +11,7 @@ def home(request):
         messege = request.POST['messege']
 
         if len(name) < 3 or len(email) < 8 or len(phone) < 10 or len(messege) < 5:
-            messages.error(request, "Please fill the form correctly!")
+            messages.warning(request, "Please fill the form correctly!")
 
         else:
             contact = Contact(name=name, email=email, phone=phone, messege=messege)

@@ -1,0 +1,15 @@
+footer{
+    color: white;
+}
+
+.website-master-alert{
+    margin-top: 100px;
+    margin-bottom: 0px;
+}
+
+@media (max-width:991px) {
+    .website-master-alert{
+        margin-top: 56px;
+        margin-bottom: 0px;
+    }
+}
