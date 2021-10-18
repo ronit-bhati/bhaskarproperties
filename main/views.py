@@ -1,6 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from main.models import Contact
+from main.models import Contact, Property
 from django.contrib import messages
 
 def home(request):
@@ -22,3 +22,6 @@ def home(request):
 
 def browse(request):
     return render(request, 'browse.html')
+
+def property(request, slug):
+    return render(request, 'property.html')
