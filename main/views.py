@@ -21,7 +21,11 @@ def home(request):
     return render(request, 'index.html')
 
 def browse(request):
-    return render(request, 'browse.html')
+    props = Property.objects.all()
+    context = {'props':props}
+    return render(request, 'browse.html', context)
 
 def property(request, slug):
-    return render(request, 'property.html')
+    prop = Property.objects.filter(slug=slug).first()
+    context = {'prop':prop}
+    return render(request, 'property.html', context)

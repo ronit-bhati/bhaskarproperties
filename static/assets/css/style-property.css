@@ -2,3 +2,21 @@
     min-height: 88.5vh;
     margin-top: 150px;
 }
+
+.img-main{
+    height: 60vh;
+}
+
+.img-sec{
+    height: 10vh;
+}
+
+.img-container{
+    margin-left: -200px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.sub-row{
+    width: 400px;
+}
