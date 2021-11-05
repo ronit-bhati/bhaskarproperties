@@ -11,14 +11,18 @@ class Property(models.Model):
     price_in = models.CharField(max_length=10)
     area_sqft = models.IntegerField()
     plot_or_house_or_flat = models.CharField(max_length=5)
-    bedroom = models.IntegerField(blank=True)
-    bathroom = models.IntegerField(blank=True)
-    balcony = models.IntegerField(blank=True)
+    floors = models.IntegerField(default=1, blank=True, null=True)
+    bedroom = models.IntegerField(blank=True, null=True)
+    bathroom = models.IntegerField(blank=True, null=True)
+    balcony = models.IntegerField(blank=True, null=True)
     img1 = models.ImageField(default="")
     img2 = models.ImageField(default="")
     img3 = models.ImageField(default="")
     img4 = models.ImageField(default="")
     timestamp = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return self.title + ' - ' + self.location
 
 class Contact(models.Model):
     sno = models.AutoField(primary_key=True)

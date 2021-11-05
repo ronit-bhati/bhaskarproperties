@@ -4,6 +4,7 @@
 }
 
 .property-card{
+    max-height: 600px;
     width: 18rem;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;

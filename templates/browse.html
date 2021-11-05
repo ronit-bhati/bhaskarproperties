@@ -7,25 +7,33 @@
 {% block body %}
 <div class="container master-cont">
     <div class="row">
+    {% for prop in props %}
         <div class="card property-card">
-            <div class="property-image"
-                style="background: url('karytonndev_background.jpg') center / contain;">
+            <div class="property-image mt-2"
+                style="background: url(/media/{{prop.img1}}) center / contain;">
             </div>
-            <div class="card-body d-flex flex-column" style="height: 262px;">
+            <div class="card-body d-flex flex-column">
                 <div>
                     <h4 style="font-family: 'Source Sans Pro', sans-serif;font-weight: 700;color: rgb(255,160,0);">
-                        2 BHK Flat in Sector-14</h4>
+                        {{prop.title}}</h4>
                     <h6 class="text-muted mb-2"
                         style="font-family: 'Source Sans Pro', sans-serif;font-weight: 600;color: #757575;">
-                        House</h6>
+                        {{prop.plot_or_house_or_flat}}</h6>
                     <p style="font-family: 'Source Sans Pro', sans-serif;color: #212121;margin-top: 16px;">
-                        - 2 Bedrooms<br>
-                        - 1 Car Parking<br>
-                        - 1756 sq. ft.<br>
+                        <b>Location</b> - {{prop.location}}<br>
+                        <b>Area</b> - {{prop.area_sqft}} sqft.<br>
+                        {% if prop.plot_or_house_or_flat == 'house' or prop.plot_or_house_or_flat == 'flat' %}
+                        <b>Floors</b> - {{prop.floors}}<br>
+                        <b>Bedrooms</b> - {{prop.bedroom}}<br>
+                        <b>Bathrooms</b> - {{prop.bathroom}}<br>
+                        <b>Balcony(s)</b> - {{prop.balcony}}<br>
+                        {% endif %}
                     </p>
-                </div><a class="card-link align-self-end link-full-view" href="property/six-bhk-independent-flat-sadiq-nagar-delhi">View Property</a>
+                </div>
+                <a class="card-link align-self-end link-full-view" href="property/{{prop.slug}}">View Property</a>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock body %}
