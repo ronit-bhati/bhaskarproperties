@@ -1,3 +1,4 @@
-/bhaskar/__pycache__
-/main/__pycache__
-/BhaskarENV
+bhaskar/__pycache__
+main/__pycache__
+BhaskarENV
+main/migrations/__pycache__/
