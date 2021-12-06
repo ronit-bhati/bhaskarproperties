@@ -20,6 +20,22 @@ def home(request):
 
     return render(request, 'index.html')
 
+def search(request):
+    query = request.GET.get('search')
+    if len(query) > 75:
+        allProps = []
+    else:
+        allPropsTitle = Property.objects.filter(title__icontains=query)
+        allPropsDescription = Property.objects.filter(description__icontains=query)
+        allPropsLocation = Property.objects.filter(location__icontains=query)
+        allPropsPrice = Property.objects.filter(price__icontains=query)
+        allProps = allPropsTitle.union(allPropsDescription, allPropsLocation, allPropsPrice)
+    params = {"allProps":allProps, "query":query}
+    if len(allProps) > 0:
+        return render(request, 'search.html', params)
+    else:
+        return render(request, 'searchnot.html', params)
+
 def browse(request):
     props = Property.objects.all()
     context = {'props':props}

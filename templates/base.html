@@ -30,6 +30,15 @@
                     <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/#team">Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+                    <form action="/search" method="get">
+                        <div class="d-flex mt-2 ms-2 align-items-center search-bar-main">
+                            <input id="search" placeholder="Search" class="form-control search-field" type="search"
+                                name="search" />
+                            <label class="form-label d-flex mb-0" for="search-field">
+                                <button class="submit-btn" type="submit"><img src="{% static 'assets/img/search.svg' %}" alt="..."></button>
+                            </label>
+                        </div>
+                    </form>
                 </ul>
             </div>
         </div>

@@ -12,4 +12,15 @@ footer{
         margin-top: 56px;
         margin-bottom: 0px;
     }
+    .search-bar-main{
+        margin-left: 0 !important;
+    }
+}
+
+.submit-btn{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;    
 }

@@ -20,12 +20,13 @@
                         style="font-family: 'Source Sans Pro', sans-serif;font-weight: 600;color: #757575;">
                         {{prop.plot_or_house_or_flat}}</h6>
                     <p style="font-family: 'Source Sans Pro', sans-serif;color: #212121;margin-top: 16px;">
+                        <h4><b>Price - {{prop.price}} {{prop.price_in}}</b></h4><br>
                         <b>Location</b> - {{prop.location}}<br>
                         <b>Area</b> - {{prop.area_sqft}} sqft.<br>
                         {% if prop.plot_or_house_or_flat == 'house' or prop.plot_or_house_or_flat == 'flat' %}
-                        <b>Floors</b> - {{prop.floors}}<br>
-                        <b>Bedrooms</b> - {{prop.bedroom}}<br>
-                        <b>Bathrooms</b> - {{prop.bathroom}}<br>
+                        <b>Floor(s)</b> - {{prop.floors}}<br>
+                        <b>Bedroom(s)</b> - {{prop.bedroom}}<br>
+                        <b>Bathroom(s)</b> - {{prop.bathroom}}<br>
                         <b>Balcony(s)</b> - {{prop.balcony}}<br>
                         {% endif %}
                     </p>

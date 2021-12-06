@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search Results{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'assets/css/style-searchnot.css' %}">{% endblock css %}
+
+{% block body %}
+<div class="container master-cont">
+    <div class="main-cont">
+        <img src="{% static 'assets/img/noresult.png' %}" alt="no result found.."><br>
+        <h1><b>No Search Results Found for "{{query}}"</b></h1><br>
+        <small class="small-txt">Try searching for something else or try again after some time.</small>
+    </div>
+</div>
+{% endblock body %}
