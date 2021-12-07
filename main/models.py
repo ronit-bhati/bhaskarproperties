@@ -10,6 +10,7 @@ class Property(models.Model):
     price = models.IntegerField()
     price_in = models.CharField(max_length=10)
     area_sqft = models.IntegerField()
+    views = models.IntegerField(default=0)
     plot_or_house_or_flat = models.CharField(max_length=5)
     floors = models.IntegerField(default=1, blank=True, null=True)
     bedroom = models.IntegerField(blank=True, null=True)
@@ -34,3 +35,9 @@ class Contact(models.Model):
 
     def __str__(self):
         return 'Messege from ' + self.name + ' - ' + self.email
+
+class allIps(models.Model):
+    ips = models.TextField(default=None)
+    postname = models.TextField(default=None)
+    def __str__(self):
+        return f"View for: {self.postname}, ip: {self.ips}"

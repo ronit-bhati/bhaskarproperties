@@ -1,9 +1,12 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from main.models import Contact, Property
+from django.db.models import Q
+from main.models import Contact, Property, allIps
 from django.contrib import messages
 
 def home(request):
+    allProps = Property.objects.all().order_by('-views')[:6]
+
     if request.method == 'POST':
         name = request.POST['name']
         email = request.POST['email']
@@ -17,8 +20,9 @@ def home(request):
             contact = Contact(name=name, email=email, phone=phone, messege=messege)
             contact.save()
             messages.success(request, "Your form has been submitted!")
+    context = {"prop":allProps}
 
-    return render(request, 'index.html')
+    return render(request, 'index.html', context)
 
 def search(request):
     query = request.GET.get('search')
@@ -43,5 +47,25 @@ def browse(request):
 
 def property(request, slug):
     prop = Property.objects.filter(slug=slug).first()
+
+    def get_client_ip(request):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        return ip
+    ip = get_client_ip(request)
+    u = allIps(ips=ip, postname=prop.slug)
+    result = allIps.objects.filter(Q(ips__icontains=ip) and Q(postname__icontains=prop.slug))
+    if len(result) == 1:
+        pass
+    elif len(result) > 1:
+        pass
+    else:
+        u.save()
+        prop.views = prop.views + 1
+        prop.save()
+
     context = {'prop':prop}
     return render(request, 'property.html', context)
