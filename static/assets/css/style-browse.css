@@ -34,3 +34,45 @@
     padding-bottom: 6px;
     font-family: 'Source Sans Pro', sans-serif;margin-top: auto;
 }
+
+@media (max-width:1399px) {
+    .row{
+        margin-left: 7vw !important;
+    }
+}
+
+@media (max-width:1199px) {
+    .row{
+        margin-left: 0vw !important;
+    }
+}
+
+@media (max-width:991px) {
+    .row{
+        margin-left: 4vw !important;
+    }
+}
+
+@media (max-width:767px) {
+    .row{
+        margin-left: 13vw !important;
+    }
+}
+
+@media (max-width:559px) {
+    .row{
+        margin-left: 18vw !important;
+    }
+}
+
+@media (max-width:449px) {
+    .row{
+        margin-left: 6vw !important;
+    }
+}
+
+@media (max-width:345px) {
+    .row{
+        margin-left: 0vw !important;
+    }
+}

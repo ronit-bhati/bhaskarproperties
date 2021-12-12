@@ -5,7 +5,40 @@
 }
 
 .img-main{
-    height: 60vh;
+    height: 480px;
+}
+
+@media (max-width:1399px) {
+    .sub-row{
+        padding-right: 50px !important;
+    }
+}
+
+@media (max-width:1199px) {
+    .img-main{
+        margin-left: 0px !important;
+        height: 380px;
+    }
+}
+
+@media (max-width:991px) {
+    .img-main{
+        margin-left: 0px !important;
+        height: 310px;
+    }
+}
+
+@media (max-width:449px) {
+    .img-main{
+        margin-left: 0px !important;
+        height: 255px;
+    }
+}
+
+@media (max-width:369px) {
+    .sub-row{
+        width: 305px !important;
+    }
 }
 
 .img-sec{
