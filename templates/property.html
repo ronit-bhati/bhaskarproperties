@@ -6,23 +6,22 @@
 
 {% block body %}
 <div class="container master-cont">
-    <div class="card">
+    <div class="card main-card">
         <div class="container-fluid top-container">
             <div class="row">
                 <div class="col-12 col-md-6 col-xl-4 offset-xl-2">
                     <div class="img-container img-main"><img class="rounded img-main" id="expandedImg" style="width:100%"
                             src="/media/{{prop.img1}}">
-                        <div id="imgtext"></div>
                     </div>
                     <div class="row img-row my-2 sub-row" style="padding-right: 10px;padding-left: 10px;">
                         <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec" src="/media/{{prop.img1}}"
-                                onclick="myFunction(this);" alt="image 1"></div>
+                                onclick="selectImg(this);" alt="image 1"></div>
                         <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec" src="/media/{{prop.img2}}"
-                                onclick="myFunction(this);" alt="image 2"></div>
+                                onclick="selectImg(this);" alt="image 2"></div>
                         <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec" src="/media/{{prop.img3}}"
-                                onclick="myFunction(this);" alt="image 3"></div>
+                                onclick="selectImg(this);" alt="image 3"></div>
                         <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec" src="/media/{{prop.img4}}"
-                                onclick="myFunction(this);" alt="image 4"></div>
+                                onclick="selectImg(this);" alt="image 4"></div>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-xl-4 offset-xl-0">
