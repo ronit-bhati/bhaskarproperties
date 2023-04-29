@@ -4,7 +4,7 @@ from django.db import models
 class Property(models.Model):
     sno = models.AutoField(primary_key=True)
     title = models.CharField(max_length=70)
-    description = models.TextField(max_length=350)
+    description = models.TextField(max_length=3500)
     slug = models.CharField(max_length=100, default="")
     location = models.CharField(max_length=100)
     price = models.IntegerField()

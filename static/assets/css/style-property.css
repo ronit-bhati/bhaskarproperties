@@ -65,5 +65,9 @@ body{
 }
 
 .li-details{
-    font-size: large;
+    font-size: medium;
+}
+
+.font-med{
+    font-size: medium;
 }
