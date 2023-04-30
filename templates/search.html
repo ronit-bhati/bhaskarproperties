@@ -2,40 +2,41 @@
 {% load static %}
 {% block title %}Search Results{% endblock title %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'assets/css/style-search.css' %}">{% endblock css %}
+    <link rel="stylesheet" href="{% static 'assets/css/style-search.css' %}">{% endblock css %}
 
 {% block body %}
-<div class="container master-cont">
-    <h2 class="mb-3"><u>Search Results for "{{query}}"</u></h2>
-    <div class="row">
-    {% for prop in allProps %}
-        <div class="card property-card">
-            <div class="property-image mt-2"
-                style="background: url(/media/{{prop.img1}}) center / contain;">
-            </div>
-            <div class="card-body d-flex flex-column">
-                <div>
-                    <h4 style="font-family: 'Source Sans Pro', sans-serif;font-weight: 700;color: rgb(255,160,0);">
-                        {{prop.title}}</h4>
-                    <h6 class="text-muted mb-2"
-                        style="font-family: 'Source Sans Pro', sans-serif;font-weight: 600;color: #757575;">
-                        {{prop.plot_or_house_or_flat}}</h6>
-                        <p style="font-family: 'Source Sans Pro', sans-serif;color: #212121;margin-top: 16px;">
-                            <h4><b>Price - {{prop.price}} {{prop.price_in}}</b></h4><br>
-                            <b>Location</b> - {{prop.location}}<br>
-                            <b>Area</b> - {{prop.area_sqft}} sqft.<br>
+    <div class="container master-cont">
+        <h2 class="mb-3"><u>Search Results for "{{ query }}"</u></h2>
+        <div class="row">
+            {% for prop in allProps %}
+                <div class="card property-card">
+                    <div class="property-image mt-2"
+                         style="background-image: url(/media/{{ prop.img1 }}); background-size: cover; background-position: center; border-radius: 10px; overflow: hidden;">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <div>
+                            <h4 style="font-family: 'Source Sans Pro', sans-serif;font-weight: 700;color: rgb(255,160,0);">
+                                {{ prop.title }}</h4>
+                            <h6 class="text-muted mb-2"
+                                style="font-family: 'Source Sans Pro', sans-serif;font-weight: 600;color: #757575;">
+                                {{ prop.plot_or_house_or_flat }}</h6>
+                            <p style="font-family: 'Source Sans Pro', sans-serif;color: #212121;margin-top: 16px;">
+                            <h4><b>Price - {{ prop.price }} {{ prop.price_in }}</b></h4><br>
+                            <b>Location</b> - {{ prop.location }}<br>
+                            <b>Area</b> - {{ prop.area_sqft }} sqft.<br>
                             {% if prop.plot_or_house_or_flat == 'house' or prop.plot_or_house_or_flat == 'flat' %}
-                            <b>Floor(s)</b> - {{prop.floors}}<br>
-                            <b>Bedroom(s)</b> - {{prop.bedroom}}<br>
-                            <b>Bathroom(s)</b> - {{prop.bathroom}}<br>
-                            <b>Balcony(s)</b> - {{prop.balcony}}<br>
+                                <b>Floor(s)</b> - {{ prop.floors }}<br>
+                                <b>Bedroom(s)</b> - {{ prop.bedroom }}<br>
+                                <b>Bathroom(s)</b> - {{ prop.bathroom }}<br>
+                                <b>Balcony(s)</b> - {{ prop.balcony }}<br>
                             {% endif %}
-                        </p>
+                            </p>
+                        </div>
+                        <a class="card-link align-self-end link-full-view" href="property/{{ prop.slug }}">View
+                            Property</a>
+                    </div>
                 </div>
-                <a class="card-link align-self-end link-full-view" href="property/{{prop.slug}}">View Property</a>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
 {% endblock body %}

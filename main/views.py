@@ -4,6 +4,7 @@ from django.db.models import Q
 from main.models import Contact, Property, allIps
 from django.contrib import messages
 
+
 def home(request):
     allProps = Property.objects.all().order_by('-views')[:6]
 
@@ -20,13 +21,14 @@ def home(request):
             contact = Contact(name=name, email=email, phone=phone, messege=messege)
             contact.save()
             messages.success(request, "Your form has been submitted!")
-    context = {"prop":allProps}
+    context = {"prop": allProps}
 
     return render(request, 'index.html', context)
 
+
 def search(request):
     query = request.GET.get('search')
-    if len(query) > 75:
+    if len(query) > 75 or len(query) < 4:
         allProps = []
     else:
         allPropsTitle = Property.objects.filter(title__icontains=query)
@@ -34,16 +36,18 @@ def search(request):
         allPropsLocation = Property.objects.filter(location__icontains=query)
         allPropsPrice = Property.objects.filter(price__icontains=query)
         allProps = allPropsTitle.union(allPropsDescription, allPropsLocation, allPropsPrice)
-    params = {"allProps":allProps, "query":query}
+    params = {"allProps": allProps, "query": query}
     if len(allProps) > 0:
         return render(request, 'search.html', params)
     else:
         return render(request, 'searchnot.html', params)
 
+
 def browse(request):
     props = Property.objects.all()
-    context = {'props':props}
+    context = {'props': props}
     return render(request, 'browse.html', context)
+
 
 def property(request, slug):
     prop = Property.objects.filter(slug=slug).first()
@@ -55,6 +59,7 @@ def property(request, slug):
         else:
             ip = request.META.get('REMOTE_ADDR')
         return ip
+
     ip = get_client_ip(request)
     u = allIps(ips=ip, postname=prop.slug)
     result = allIps.objects.filter(Q(ips__icontains=ip) and Q(postname__icontains=prop.slug))
@@ -67,5 +72,5 @@ def property(request, slug):
         prop.views = prop.views + 1
         prop.save()
 
-    context = {'prop':prop}
+    context = {'prop': prop}
     return render(request, 'property.html', context)

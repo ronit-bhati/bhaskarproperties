@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
 class Property(models.Model):
     sno = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=70)
+    title = models.CharField(max_length=100)
     description = models.TextField(max_length=3500)
     slug = models.CharField(max_length=100, default="")
     location = models.CharField(max_length=100)
-    price = models.IntegerField()
+    price = models.FloatField()
     price_in = models.CharField(max_length=10)
     area_sqft = models.IntegerField()
     views = models.IntegerField(default=0)
