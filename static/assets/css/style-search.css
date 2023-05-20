@@ -6,15 +6,11 @@
 .property-card{
     max-height: 600px;
     width: 18rem;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-radius: 20px;
     box-shadow: 5px 5px 16px 2px rgba(0,0,0,0.25);
-    margin: 14px;
     min-width: 280px;
     max-width: 300px;
-    margin-bottom: 20px;
+    margin: 14px 14px 20px;
 }
 
 .property-image{
@@ -25,12 +21,9 @@
 }
 
 .link-full-view{
-    padding: 4px;
     background: #b86868;
     color: rgb(255,255,255);
     border-radius: 17px;
-    padding-right: 14px;
-    padding-left: 14px;
-    padding-bottom: 6px;
+    padding: 4px 14px 6px;
     font-family: 'Source Sans Pro', sans-serif;margin-top: auto;
 }

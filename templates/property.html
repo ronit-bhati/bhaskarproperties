@@ -1,55 +1,72 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{{prop.slug}}{% endblock title %}
+{% block title %}{{ prop.slug }}{% endblock title %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'assets/css/style-property.css' %}">{% endblock css %}
+    <link rel="stylesheet" href="{% static 'assets/css/style-property.css' %}">{% endblock css %}
 
 {% block body %}
-<div class="container master-cont">
-    <div class="card main-card">
-        <div class="container-fluid top-container">
-            <div class="row">
-                <div>
-                    <div class="img-container img-main"><img class="rounded img-main" id="expandedImg" style="width:100%"
-                            src="/media/{{prop.img1}}">
+    <div class="container master-cont">
+        <div class="card main-card">
+            <div class="container-fluid top-container">
+                <div class="row">
+                    <div class="widthFix">
+                        <div class="img-container">
+                            <img class="rounded expandedImg" id="expandedImg" style="width:100%"
+                                 src="/media/{{ prop.img1 }}" alt="property image">
+                        </div>
+                        <div class="row img-row my-2 sub-row" style="padding-right: 10px;padding-left: 10px;">
+                            <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec"
+                                                                 src="/media/{{ prop.img1 }}"
+                                                                 onclick="selectImg(this);" alt="image 1"></div>
+                            <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec"
+                                                                 src="/media/{{ prop.img2 }}"
+                                                                 onclick="selectImg(this);" alt="image 2"></div>
+                            <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec"
+                                                                 src="/media/{{ prop.img3 }}"
+                                                                 onclick="selectImg(this);" alt="image 3"></div>
+                            <div class="col column img-sec padFix"><img class="img-thumbnail img-fluid img-sec"
+                                                                        src="/media/{{ prop.img4 }}"
+                                                                        onclick="selectImg(this);" alt="image 4"></div>
+                        </div>
                     </div>
-                    <div class="row img-row my-2 sub-row" style="padding-right: 10px;padding-left: 10px;">
-                        <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec" src="/media/{{prop.img1}}"
-                                onclick="selectImg(this);" alt="image 1"></div>
-                        <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec" src="/media/{{prop.img2}}"
-                                onclick="selectImg(this);" alt="image 2"></div>
-                        <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec" src="/media/{{prop.img3}}"
-                                onclick="selectImg(this);" alt="image 3"></div>
-                        <div class="col column img-sec"><img class="img-thumbnail img-fluid img-sec" src="/media/{{prop.img4}}"
-                                onclick="selectImg(this);" alt="image 4"></div>
+                    <div>
+                        <h3 class="mt-3">{{ prop.title }}</h3>
+                        <hr>
+                        <h4>Price - &#8377; {{ prop.price }} {{ prop.price_in }}</h4>
+                        <p class="desc-main"><b>Desciption - </b>{{ prop.description }}</p>
+                        <hr>
+                        <h4>Details :</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul>
+                                    <li class="li-details"><b>Location - </b> {{ prop.location }}<br></li>
+                                    <li class="li-details"><b>Area - </b> {{ prop.area_sqft }} sqft.<br></li>
+                                    <li class="li-details"><b>Type - </b> {{ prop.plot_or_house_or_flat }}<br></li>
+                                </ul>
+                            </div>
+                            {% if prop.plot_or_house_or_flat == 'Flat' or prop.plot_or_house_or_flat == 'House' %}
+                                <div class="col-lg-6">
+                                    <ul>
+                                        <li class="li-details"><b>Floor(s) - </b> {{ prop.floors }}<br></li>
+                                        <li class="li-details"><b>Bedroom(s) - </b> {{ prop.bedroom }}<br></li>
+                                        <li class="li-details"><b>Bathroom(s) - </b> {{ prop.bathroom }}<br></li>
+                                        <li class="li-details"><b>Balcony(s) - </b> {{ prop.balcony }}<br></li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <hr>
+
+                        <h4>Interested? Contact Us!</h4>
+                        <ul>
+                            <li class="li-details"><b>Email - <br></b> bhaskarpropertieshisar@gmail.com<br></li>
+                            <li class="li-details"><b>Phone No - <br></b> +919215678901, +918800441901<br></li>
+                            <li class="li-details"><b>Address - <br></b> 1542, Sector 1-4, Hisar - 125001<br></li>
+                        </ul>
                     </div>
-                </div>
-                <div>
-                    <h3 class="mt-3">{{prop.title}}</h3><hr>
-                    <h4>Price - &#8377; {{prop.price}} {{prop.price_in}}</h4>
-                    <p class="desc-main"><b>Desciption - </b>{{prop.description}}</p><hr>
-                    <h4>Details :</h4>
-                    <ul>
-                        <li class="li-details"><b>Location - </b> {{prop.location}}<br></li>
-                        <li class="li-details"><b>Area - </b> {{prop.area_sqft}} sqft.<br></li>
-                        <li class="li-details"><b>Type - </b> {{prop.plot_or_house_or_flat}}<br></li>
-                        {% if prop.plot_or_house_or_flat == 'flat' or prop.plot_or_house_or_flat == 'house' %}
-                        <li class="li-details"><b>Floor(s) - </b> {{prop.floors}}<br></li>
-                        <li class="li-details"><b>Bedroom(s) - </b> {{prop.bedroom}}<br></li>
-                        <li class="li-details"><b>Bathroom(s) - </b> {{prop.bathroom}}<br></li>
-                        <li class="li-details"><b>Balcony(s) - </b> {{prop.balcony}}<br></li>
-                        {% endif %}
-                    </ul><hr>
-                    <h4>Interested? Contact Us!</h4>
-                    <ul>
-                        <li class="li-details"><b>Email - <br></b> bhaskarpropertieshisar@gmail.com<br></li>
-                        <li class="li-details"><b>Phone No - <br></b> +919215678901, +918800441901<br></li>
-                        <li class="li-details"><b>Address - <br></b> 1542, Sector 1-4, Hisar - 125001<br></li>
-                    </ul>
                 </div>
             </div>
         </div>
+        <script src="{% static 'assets/js/image-expand.js' %}"></script>
     </div>
-    <script src="{% static 'assets/js/image-expand.js' %}"></script>
-</div>
 {% endblock body %}
